@@ -1,17 +1,27 @@
-
-
 def groupAnagram(mylist):
     main = {}
-    for value in mylist:
+
+    for item in mylist:
         hashmap = {}
-        for letter in value:
+        for letter in item:
             if letter in hashmap:
-                hashmap[letter] = hashmap[letter]+1
-            else: 
+                hashmap[letter] += 1
+            else:
                 hashmap[letter] = 1
-        main[value] = hashmap
-    print(tuple(main.values()))
-            
+
+        # dicts aren't hashable — turn the counts into a sorted tuple
+        signature = tuple(sorted(hashmap.items()))
+        
+
+        if signature in main:
+            main[signature].append(item)
+            print(main)
+        else:
+            main[signature] = [item]
+
+    return list(main.values())
+
+
 print(groupAnagram(["eat", "tea", "tan", "ate", "nat", "bat"]))
 # [['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']]
 # def groupAnagram(mylist):

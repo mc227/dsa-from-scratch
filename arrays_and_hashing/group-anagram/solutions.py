@@ -1,15 +1,12 @@
 '''
+>>> Solution().groupAnagrams(["eat","tea","tan","ate","nat","bat"])
+[['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']]
 
->>> Solution().groupAnagram(["eat","tea","tan","ate","nat","bat"])
-[["bat"],["nat","tan"],["ate","eat","tea"]]
+>>> Solution().groupAnagrams([""])
+[['']]
 
->>> Solution().groupAnagram([""])
-[[""]]
-
->>> Solution().groupAnagram(["a"])
-[["a"]]
-
-
+>>> Solution().groupAnagrams(["a"])
+[['a']]
 '''
 
 from typing import List
@@ -17,8 +14,12 @@ from typing import List
 # Write your code here:
 
 class Solution:
-    def groupAnagram(self, strs: List[str]) -> List[List[str]]:        
-        pass
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        main = {}
+        for item in strs:
+            signature = tuple(sorted(item))
+            main.setdefault(signature, []).append(item)
+        return list(main.values())
 
 
 # Do not edit any code below this line!

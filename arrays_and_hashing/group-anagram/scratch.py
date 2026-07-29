@@ -1,24 +1,18 @@
 def groupAnagram(mylist):
     main = {}
-
     for item in mylist:
         hashmap = {}
         for letter in item:
             if letter in hashmap:
-                hashmap[letter] += 1
+                hashmap[letter] = hashmap[letter]+1
             else:
                 hashmap[letter] = 1
-
-        # dicts aren't hashable — turn the counts into a sorted tuple
         signature = tuple(sorted(hashmap.items()))
-        
 
         if signature in main:
             main[signature].append(item)
-            print(main)
         else:
             main[signature] = [item]
-
     return list(main.values())
 
 

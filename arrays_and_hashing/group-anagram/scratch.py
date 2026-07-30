@@ -1,4 +1,4 @@
-def groupAnagram(mylist):
+def groupAnagrams(mylist):
     main = {}
     for item in mylist:
         hashmap = {}
@@ -16,7 +16,7 @@ def groupAnagram(mylist):
     return list(main.values())
 
 
-print(groupAnagram(["eat", "tea", "tan", "ate", "nat", "bat"]))
+print(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
 # [['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']]
 # def groupAnagram(mylist):
 #     main = {}

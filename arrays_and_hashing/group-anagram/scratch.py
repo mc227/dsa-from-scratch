@@ -1,23 +1,31 @@
-def groupAnagrams(mylist):
-    hashmap = {}
-    for word in mylist:
-        freq_list = [0] * 26
-        for letter in word:
-            freq_list[ord(letter) - ord('a')]+=1
-    char = 'a'
-    freq_string =[]
-    print(freq_list)
-    for item in freq_list:
-        freq_string.append(char)
-        freq_string.append(item)
-        char = chr(ord('a')+1)
-    if freq_string in hashmap:
-        hashmap[freq_string] = []
-    else:
-        hashmap[freq_string].append()
+from typing import List
 
-# print(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
-print(groupAnagrams(["eat"]))
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        hashmap = {}
+        for item in strs:
+            freq_list = [0] * 26
+            for letter in item:
+                freq_list[ord(letter)-ord('a')]+=1
+            freq_string = []
+            char = 'a'
+            for value in freq_list:
+                freq_string.append(char)
+                freq_string.append(str(value))
+                char = chr(ord(char) + 1)
+            freq_string = ''.join(freq_string)
+            
+            if freq_string not in hashmap:
+                hashmap[freq_string] = [item]
+            else:
+                hashmap[freq_string].append(item)
+                
+        return list(hashmap.values())
+
+                
+
+print(Solution().groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
+# print(Solution().groupAnagrams(["eat","tea"]))
 # [['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']]
 # def groupAnagram(mylist):
 #     main = {}

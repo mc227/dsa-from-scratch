@@ -3,26 +3,16 @@ from typing import List
 
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        s_freq = {}
-        t_freq = {}
-        for item in s:
-            if item in s_freq:
-                s_freq[item] += 1
-            else:
-                s_freq[item] = 1
-        for item in t:
-            if item in t_freq:
-                t_freq[item] += 1
-            else:
-                t_freq[item] = 1
-        is_subset = s_freq.items() <= t_freq.items()
-        return is_subset
-        
+        # two pointers: i walks s, j walks t
+        i = 0
+        j = 0
+        while i < len(s) and j < len(t):
+            pass  # TODO
+        return False
 
-# print(Solution().isSubsequence("abc", "ahbgdc"))
-# print(Solution().isSubsequence("axc", "ahbgdc"))
-# print(Solution().isSubsequence("", "ahbgdc"))
-print(Solution().isSubsequence("abc", ""))
+
+print(Solution().isSubsequence("abc", "ahbgdc"))
+
 
 '''
 >>> Solution().isSubsequence("abc", "ahbgdc")

@@ -3,19 +3,16 @@ from typing import List
 
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        # dedupe so lookups are O(1) and each run is walked once
-        num_set = set(nums)
-        longest = 0
-        for n in num_set:
-            # only start counting at the head of a run
-            if n - 1 not in num_set:
-                length = 1
-                while n + length in num_set:
-                    length += 1
-                # print(f"run starts at {n}, length {length}")
-                if length > longest:
-                    longest = length
-        return longest
+        largest_num = max(nums)
+        conceicao = 0
+        bins = [0] * (largest_num+1)
+        for num in nums:
+            # print(num)
+            bins[num] = 1
+            # print(bins)
+        for index, item in enumerate(bins):
+            print(index, item)
+        
 
 
 print(Solution().longestConsecutive([100, 4, 200, 1, 3, 2]))

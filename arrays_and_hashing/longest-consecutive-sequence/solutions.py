@@ -23,18 +23,7 @@ from typing import List
 
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        # dedupe so lookups are O(1) and each run is walked once
-        num_set = set(nums)
-        longest = 0
-        for n in num_set:
-            # only start counting at the head of a run
-            if n - 1 not in num_set:
-                length = 1
-                while n + length in num_set:
-                    length += 1
-                if length > longest:
-                    longest = length
-        return longest
+        pass
 
 
 # Do not edit any code below this line!

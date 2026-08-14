@@ -3,19 +3,29 @@ from typing import List
 
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
+        if nums == []:
+            return 0
         largest_num = max(nums)
-        conceicao = 0
+        foo = 0
         bins = [0] * (largest_num+1)
         for num in nums:
             # print(num)
             bins[num] = 1
-            # print(bins)
-        for index, item in enumerate(bins):
-            print(index, item)
+        mark = []
+        for item in bins:
+            if item:
+                foo+=1
+            else:
+                if foo:
+                    mark.append(foo)
+                    foo = 0
+        if item:
+            mark.append(foo)
+        return max(mark)        
         
 
 
-print(Solution().longestConsecutive([100, 4, 200, 1, 3, 2]))
+# print(Solution().longestConsecutive([100, 4, 200, 1, 3, 2]))
 # print(Solution().longestConsecutive([0,3,7,2,5,8,4,6,0,1]))
 # print(Solution().longestConsecutive([1,0,1,2]))
 # print(Solution().longestConsecutive([]))
@@ -32,4 +42,8 @@ print(Solution().longestConsecutive([100, 4, 200, 1, 3, 2]))
 
 >>> Solution().longestConsecutive([])
 0
+
+>>> Solution().longestConsecutive([0,-1])
+2
+
 '''

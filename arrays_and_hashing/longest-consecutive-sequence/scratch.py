@@ -3,27 +3,29 @@ from typing import List
 
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
+        if nums == []:
+            return 0
         longestConsecutive = []
         consecutive = 1
         sorted_nums = sorted(nums)
+        
+        nodups_nums = list(tuple(dict.fromkeys(sorted_nums)))
 
-        for i in range(len(sorted_nums)-1):
-            if sorted_nums[i]+1 == sorted_nums[i+1]:
+        for i in range(len(nodups_nums)-1):
+            if nodups_nums[i]+1 == nodups_nums[i+1]:
                 consecutive+=1
-            elif sorted_nums[i]+1 != sorted_nums[i+1]:
+            else:
                 longestConsecutive.append(consecutive)
                 consecutive = 1
-        print(longestConsecutive)
-        # consider the last item also
-        # return longestConsecutive
-        
+        longestConsecutive.append(consecutive)
+        return max(longestConsecutive)
 
 
 print(Solution().longestConsecutive([100, 4, 200, 1, 3, 2]))
-# print(Solution().longestConsecutive([0,3,7,2,5,8,4,6,0,1]))
-# print(Solution().longestConsecutive([1,0,1,2]))
-# print(Solution().longestConsecutive([]))
-# print(Solution().longestConsecutive([0,-1]))
+print(Solution().longestConsecutive([0,3,7,2,5,8,4,6,0,1]))
+print(Solution().longestConsecutive([1,0,1,2]))
+print(Solution().longestConsecutive([]))
+print(Solution().longestConsecutive([0,-1]))
 
 '''
 >>> Solution().longestConsecutive([100, 4, 200, 1, 3, 2])
